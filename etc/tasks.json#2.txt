@@ -1,0 +1,70 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "lable": "build_c",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "-o",
+                "${fileBasenameNoExtension}.out",
+                "${file}"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+        },
+
+        {
+            "label": "exec_c",
+            "type": "shell",
+            "command": "./${fileBasenameNoExtension}.out",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
+
+        },
+
+        {
+            "lable": "build_c++",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-o",
+                "${fileBasenameNoExtension}.out",
+                "${file}"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+        },
+
+
+        {
+            "lable": "py_exec",
+            "type": "shell",
+            "command": "python",
+            "args": [
+                "${file}"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+
+        {
+            "lable": "pylint",
+            "type": "shell",
+            "command": "pylint",
+            "args": [
+                "${file}"
+            ]
+        },
+    ]
+}
